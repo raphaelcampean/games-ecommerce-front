@@ -1,44 +1,51 @@
-# 🎮 GameStore Front-end
+🇧🇷 [Leia em Português](./README-pt.md)
 
-Esta é a interface moderna e responsiva do e-commerce GameStore, desenvolvida com **React** e **Tailwind CSS**. O foco principal é proporcionar uma experiência de usuário fluida (SPA), com um design inspirado em interfaces de jogos e alto desempenho.
+# 🎮 GameStore Frontend
 
-## 🚀 Tecnologias Utilizadas
+This is the modern and responsive interface of the GameStore e-commerce, built with **React** and **Tailwind CSS**.  
+The main goal is to provide a smooth user experience (SPA) with a design inspired by gaming platforms and high performance.
 
-* **React 18**: Biblioteca principal para construção da interface.
-* **Tailwind CSS**: Estilização baseada em utilitários para design responsivo e moderno.
-* **React Router Dom**: Gerenciamento de rotas e navegação dinâmica.
-* **Axios**: Integração com a API REST em Spring Boot.
-* **Lucide React**: Biblioteca de ícones (opcional/sugerido).
+---
 
-## ✨ Funcionalidades
+## 🚀 Tech Stack
 
-* **Catálogo Dinâmico**: Listagem de jogos consumida diretamente do back-end.
-* **Navegação Fluida**: Sistema de rotas sem recarregamento de página.
-* **Design Glassmorphism**: Cards com efeito de desfoque e transparência.
-* **Responsividade**: Interface adaptável para Mobile, Tablet e Desktop.
+- **React 18** – Main library for building the user interface
+- **Tailwind CSS** – Utility-first styling for modern and responsive design
+- **React Router DOM** – Client-side routing and navigation
+- **Axios** – Integration with the Spring Boot REST API
+- **Lucide React** – Icon library (optional)
 
-## 🛠️ Como Rodar o Projeto
+---
 
-1.  **Clone o repositório:**
+## ✨ Features
+
+- **Dynamic Catalog** – Game listing fetched directly from the backend
+- **Smooth Navigation** – SPA routing without page reloads
+- **Glassmorphism Design** – Cards with blur and transparency effects
+- **Responsive Layout** – Works across mobile, tablet, and desktop
+
+---
+
+## 🛠️ Getting Started
+
+### 1. Clone the repository
     ```bash
-    git clone [https://github.com/seu-usuario/gamestore-frontend.git](https://github.com/seu-usuario/gamestore-frontend.git)
+    git clone https://github.com/your-username/gamestore-frontend.git
     ```
-
-2.  **Instale as dependências:**
+### 2. Install Dependencies
     ```bash
     npm install
     ```
+### 3. Configure the API
+    Make sure the Spring Boot backend is running at `http://localhost:8080`. If needed, update the base URL in: `src/api/Api.js`.
 
-3.  **Configure a API:**
-    Certifique-se de que o back-end Spring Boot está rodando em `http://localhost:8080`. Se necessário, ajuste a URL base no arquivo `src/api/gameApi.js`.
-
-4.  **Inicie o servidor de desenvolvimento:**
+### 4. Start the development server
     ```bash
     npm run dev
     ```
 
-5.  **Acesse no navegador:**
-    `http://localhost:5173` (ou a porta indicada no terminal).
+### 5. Open in your browser
+    `http://localhost:5173`
 
----
-Desenvolvido por Raphael Campean - Foco em Back-end e aprendizado contínuo em ecossistemas Java/React.
+Developed by Raphael Campean
+Focused on Backend development and continuous learning in Java and React ecosystems.
