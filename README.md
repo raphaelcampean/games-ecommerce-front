@@ -1,17 +1,44 @@
-# React + Vite
+# 🎮 GameStore Front-end
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Esta é a interface moderna e responsiva do e-commerce GameStore, desenvolvida com **React** e **Tailwind CSS**. O foco principal é proporcionar uma experiência de usuário fluida (SPA), com um design inspirado em interfaces de jogos e alto desempenho.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologias Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* **React 18**: Biblioteca principal para construção da interface.
+* **Tailwind CSS**: Estilização baseada em utilitários para design responsivo e moderno.
+* **React Router Dom**: Gerenciamento de rotas e navegação dinâmica.
+* **Axios**: Integração com a API REST em Spring Boot.
+* **Lucide React**: Biblioteca de ícones (opcional/sugerido).
 
-## React Compiler
+## ✨ Funcionalidades
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **Catálogo Dinâmico**: Listagem de jogos consumida diretamente do back-end.
+* **Navegação Fluida**: Sistema de rotas sem recarregamento de página.
+* **Design Glassmorphism**: Cards com efeito de desfoque e transparência.
+* **Responsividade**: Interface adaptável para Mobile, Tablet e Desktop.
 
-## Expanding the ESLint configuration
+## 🛠️ Como Rodar o Projeto
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# games-ecommerce-front
+1.  **Clone o repositório:**
+    ```bash
+    git clone [https://github.com/seu-usuario/gamestore-frontend.git](https://github.com/seu-usuario/gamestore-frontend.git)
+    ```
+
+2.  **Instale as dependências:**
+    ```bash
+    npm install
+    ```
+
+3.  **Configure a API:**
+    Certifique-se de que o back-end Spring Boot está rodando em `http://localhost:8080`. Se necessário, ajuste a URL base no arquivo `src/api/gameApi.js`.
+
+4.  **Inicie o servidor de desenvolvimento:**
+    ```bash
+    npm run dev
+    ```
+
+5.  **Acesse no navegador:**
+    `http://localhost:5173` (ou a porta indicada no terminal).
+
+---
+Desenvolvido por Raphael Campean - Foco em Back-end e aprendizado contínuo em ecossistemas Java/React.
