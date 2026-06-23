@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply flex justify-center items-center min-h-screen m-0;
+    @apply min-h-screen m-0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
   }

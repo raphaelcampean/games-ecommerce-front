@@ -16,23 +16,27 @@ import New from "./pages/admin/products/New.jsx";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<MainLayout />}>
-        <Route index element={<Home />} />
+      <Route element={<MainLayout />}>
+        <Route path="/" element={<Home />} />
         <Route path="cadastro" element={<Registration />} />
         <Route path="produtos/:slug" element={<ProductDetails />} />
-        <Route path="*" element={<NotFound />} />
       </Route>
 
       <Route path="/admin" element={<AdminLayout />}>
         <Route index element={<AdminDashboard />} />
-        <Route path="*" element={<NotFound />} />
+
         <Route path="produtos">
           <Route index element={<Index />} />
+          <Route path="novo" element={<New />} />
           <Route path=":slug" element={<Show />} />
           <Route path=":slug/editar" element={<Edit />} />
-          <Route path="novo" element={<New />} />
         </Route>
+
       </Route>
+
+
+      <Route path="*" element={<NotFound />} />
+
     </Routes>
   );
 }
