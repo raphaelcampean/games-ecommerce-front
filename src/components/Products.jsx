@@ -19,6 +19,7 @@ function Products({ products, loading }) {
             </div>
           )}
 
+          
         </div>
       </div>
   )

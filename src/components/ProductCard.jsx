@@ -5,9 +5,11 @@ function ProductCard({ product }) {
     <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-3xl shadow-2xl hover:scale-105 hover:border-purple-400/40 transition-all duration-300 group overflow-hidden flex flex-col">
       <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition duration-300 rounded-3xl"></div>
         <div className="relative h-40 w-full bg-black/40 rounded-2xl mb-4 flex items-center justify-center border border-white/10 overflow-hidden">
-          <span className="text-white/10 text-5xl font-black tracking-widest">
-            GAME
-          </span>
+          <img
+            src={product.image}
+            alt={product.name}
+            className="h-full w-full object-cover rounded-2xl"
+          />
         </div>
 
         <Link to={`/produtos/${product.slug}`} className="relative">
