@@ -81,43 +81,82 @@ function Registration() {
 	}, [username]);
 
 	return (
-		<div className="flex items-center justify-center px-6">
-			<div className="w-full max-w-md bg-white/5 backdrop-blur-xl border border-white/10 p-10 rounded-3xl shadow-2xl">
-				<h1 className="text-3xl font-black text-center text-white mb-8">
-					Crie sua Conta
+		<div className="flex items-center justify-center px-6 min-h-[80vh]">
+			<div className="w-full max-w-md bg-[#1A1C1F] border border-[#2A2C31] p-10 rounded-sm shadow-2xl relative overflow-hidden">
+				{/* Detalhe estético: Uma linha vermelha no topo do card para identificação da marca */}
+				<div className="absolute top-0 left-0 w-full h-[4px] bg-[#D91A2A]"></div>
+
+				<h1 className="text-3xl font-black text-center text-[#F4F4F6] mb-2 tracking-tight uppercase">
+					Entrar no Dojo
 				</h1>
+				<p className="text-center text-xs text-[#F4F4F6]/40 mb-8 uppercase tracking-widest font-mono">
+					Inicie sua jornada na Blade Games
+				</p>
 
 				<form className="flex flex-col gap-4" onSubmit={createUser}>
-					<input value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="Nome" className="w-full px-4 py-3 rounded-xl bg-black/30 border border-white/10 text-white placeholder-gray-400 focus:border-purple-400 focus:ring-2 focus:ring-purple-500/30 outline-none transition-all" required />
 					
-					<input value={email} onChange={handleEmailChange} type="email" placeholder="Email" className={`w-full px-4 py-3 rounded-xl bg-black/30 border ${
+					{/* Input de Nome */}
+					<input 
+						value={name} 
+						onChange={(e) => setName(e.target.value)} 
+						type="text" 
+						placeholder="Nome" 
+						className="w-full px-4 py-3 rounded-none bg-[#141416] border border-[#2A2C31] text-[#F4F4F6] placeholder-[#F4F4F6]/30 focus:border-[#D91A2A] outline-none transition-all font-sans" 
+						required 
+					/>
+					
+					{/* Input de Email */}
+					<input 
+						value={email} 
+						onChange={handleEmailChange} 
+						type="email" 
+						placeholder="Email" 
+						className={`w-full px-4 py-3 rounded-none bg-[#141416] border ${
 							emailError
-								? "border-red-500 focus:border-red-500 focus:ring-red-500/30"
-								: "border-white/10 focus:border-purple-400 focus:ring-purple-500/30"
-						} text-white placeholder-gray-400 focus:ring-2 outline-none transition-all`}
+								? "border-[#D91A2A] focus:border-[#D91A2A]"
+								: "border-[#2A2C31] focus:border-[#D91A2A]"
+						} text-[#F4F4F6] placeholder-[#F4F4F6]/30 outline-none transition-all font-sans`}
 						required
 					/>
 
-					<p className={`text-red-500 text-sm ${emailError ? "block" : "hidden"}`}>
-						Email inválido.
+					<p className={`text-[#D91A2A] text-xs font-mono tracking-wide uppercase ${emailError ? "block" : "hidden"}`}>
+						⚠️ Email inválido ou desonrado.
 					</p>
 
-					<input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Senha" className="w-full px-4 py-3 rounded-xl bg-black/30 border border-white/10 text-white placeholder-gray-400 focus:border-purple-400 focus:ring-2 focus:ring-purple-500/30 outline-none transition-all" required/>
+					{/* Input de Senha */}
+					<input 
+						value={password} 
+						onChange={(e) => setPassword(e.target.value)} 
+						type="password" 
+						placeholder="Senha" 
+						className="w-full px-4 py-3 rounded-none bg-[#141416] border border-[#2A2C31] text-[#F4F4F6] placeholder-[#F4F4F6]/30 focus:border-[#D91A2A] outline-none transition-all font-sans" 
+						required
+					/>
 
-					<input value={username} onChange={handleUsernameChange} type="text" placeholder="Username" className={`w-full px-4 py-3 rounded-xl bg-black/30 border ${
+					{/* Input de Username */}
+					<input 
+						value={username} 
+						onChange={handleUsernameChange} 
+						type="text" 
+						placeholder="Alcunha (Username)" 
+						className={`w-full px-4 py-3 rounded-none bg-[#141416] border ${
 							usernameError
-								? "border-red-500 focus:border-red-500 focus:ring-red-500/30"
-								: "border-white/10 focus:border-purple-400 focus:ring-purple-500/30"
-						} text-white placeholder-gray-400 focus:ring-2 outline-none transition-all`}
+								? "border-[#D91A2A] focus:border-[#D91A2A]"
+								: "border-[#2A2C31] focus:border-[#D91A2A]"
+						} text-[#F4F4F6] placeholder-[#F4F4F6]/30 outline-none transition-all font-sans`}
 						required
 					/>
 
-					<p className={`text-red-500 text-sm ${usernameError ? "block" : "hidden"}`}>
-						Username já está em uso.
+					<p className={`text-[#D91A2A] text-xs font-mono tracking-wide uppercase ${usernameError ? "block" : "hidden"}`}>
+						⚠️ Este nome já pertence a outro guerreiro.
 					</p>
 
-					<button type="submit" className="mt-4 bg-gradient-to-r from-purple-500 to-cyan-500 text-white py-4 rounded-xl font-bold hover:opacity-90 active:scale-95 transition-all shadow-lg shadow-purple-900/40 uppercase tracking-widest text-sm">
-						🚀 Cadastrar
+					{/* Botão de Envio */}
+					<button 
+						type="submit" 
+						className="mt-4 bg-[#D91A2A] text-[#F4F4F6] py-4 rounded-none font-bold hover:bg-[#b01522] active:scale-[0.98] transition-all shadow-md uppercase tracking-widest text-sm"
+					>
+						Forjar Cadastro
 					</button>
 				</form>
 			</div>

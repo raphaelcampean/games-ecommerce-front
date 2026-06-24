@@ -10,10 +10,10 @@ function Home() {
     async function loadProducts() {
       try {
         const response = await api.get('/products');
-        setProducts(response.data);
+        response.data.length === 0 ? handleProducts() : setProducts(response.data);
       } catch (error) {
         console.error('Erro ao carregar produtos:', error);
-        handleProducts(); // Chama a função handleProducts em caso de erro
+        handleProducts();
       } finally {
         setLoading(false);
       }
@@ -48,17 +48,15 @@ function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 py-10 px-6 rounded-lg shadow-2xl border border-gray-700">
+    <div className="min-h-screen bg-[#141416] py-10 px-6 rounded-lg shadow-2xl border border-[#2A2C31]">
       <section className="text-center px-6 mt-10 mb-16">
-        <h2 className="text-5xl font-extrabold text-white drop-shadow-lg mb-4">
-          Os melhores games em um só lugar
+        <h2 className="text-5xl font-extrabold text-[#F4F4F6] mb-4 tracking-tight">
+          Blade Games: O Arsenal
         </h2>
-
-        <p className="text-white/80 max-w-2xl mx-auto">
-          Explore nossa coleção de jogos e monte sua biblioteca perfeita.
+        <p className="text-[#F4F4F6]/70 max-w-2xl mx-auto italic">
+          "A precisão de uma lâmina. O catálogo dos seus sonhos."
         </p>
       </section>
-
       <Products products={products} loading={loading} />
     </div>
   );
