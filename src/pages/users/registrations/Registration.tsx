@@ -10,7 +10,7 @@ function Registration() {
 	const [emailError, setEmailError] = useState(false);
 	const [usernameError, setUsernameError] = useState(false);
 
-	async function createUser(event) {
+	async function createUser(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
 
 		try {
@@ -34,23 +34,23 @@ function Registration() {
 		}
 	}
 
-	const verifyEmail = (email) => {
+	const verifyEmail = (email: string) => {
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		return emailRegex.test(email);
 	};
 
-	const handleEmailChange = (event) => {
+	const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const value = event.target.value;
 
 		setEmail(value);
 		setEmailError(!verifyEmail(value));
 	};
 
-	const handleUsernameChange = (event) => {
+	const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setUsername(event.target.value);
 	};
 
-	async function verifyUsername(username) {
+	async function verifyUsername(username: string): Promise<boolean> {
 		try {
 			const response = await api.get(
 				`/users/verify-username/${username}`

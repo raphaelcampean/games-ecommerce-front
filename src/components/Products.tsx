@@ -1,6 +1,16 @@
 import ProductCard from "./ProductCard";
 
-function Products({ products, loading }) {
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  stockQuantity: number;
+  description: string;
+  slug: string;
+  image: string;
+}
+
+function Products({ products, loading }: { products: Product[]; loading: boolean }) {
   return (
     <div className="flex justify-center px-6">
       <div className="w-full max-w-6xl">

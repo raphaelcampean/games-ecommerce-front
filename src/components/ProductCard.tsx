@@ -1,6 +1,16 @@
 import { Link } from "react-router-dom";
 
-function ProductCard({ product }) {
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  stockQuantity: number;
+  description: string;
+  slug: string;
+  image: string;
+}
+
+function ProductCard({ product }: { product: Product }) {
   return (
     <div className="relative bg-[#1A1C1F] border border-[#2A2C31] p-6 shadow-xl transition-all duration-500 group overflow-hidden flex flex-col hover:border-[#D91A2A]">
       <div className="absolute inset-0 bg-gradient-to-tr from-[#D91A2A]/5 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
@@ -22,7 +32,7 @@ function ProductCard({ product }) {
       <div className="flex-col items-center mb-4">
         <div className="flex justify-between items-center">
           <span className="text-2xl font-black text-[#F4F4F6]">
-            R$ {product.price}
+            R$ {product.price.toFixed(2)}
           </span>
           <span className="text-[10px] uppercase tracking-widest bg-transparent text-[#D91A2A] border border-[#D91A2A] px-3 py-1 font-bold">
             {product.stockQuantity} em estoque
