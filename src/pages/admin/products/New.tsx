@@ -83,7 +83,7 @@ export default function ProductNew() {
             <label className="text-sm text-gray-600">Plataforma</label>
             <input type="text" placeholder="PC / PS5 / Xbox" className="w-full border rounded px-3 py-2"
               name="platform"
-              value={product.platform}
+              value={platform?.name || ""}
               onChange={handleInputChange}
             />
           </div>

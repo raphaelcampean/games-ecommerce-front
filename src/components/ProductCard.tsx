@@ -7,7 +7,7 @@ interface Product {
   stockQuantity: number;
   description: string;
   slug: string;
-  image: string;
+  imageUrl: string;
 }
 
 function ProductCard({ product }: { product: Product }) {
@@ -17,7 +17,7 @@ function ProductCard({ product }: { product: Product }) {
       
       <div className="relative h-48 w-full bg-black rounded-sm mb-4 flex items-center justify-center border-b-2 border-[#D91A2A] overflow-hidden">
         <img
-          src={product.image}
+          src={product.imageUrl}
           alt={product.name}
           className="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
         />

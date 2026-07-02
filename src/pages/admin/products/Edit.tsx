@@ -16,7 +16,6 @@ export default function ProductEdit() {
   return (
     <div className="p-6 space-y-6">
 
-      {/* HEADER */}
       <div>
         <h1 className="text-2xl font-bold text-gray-800">
           Editar Produto
@@ -26,7 +25,6 @@ export default function ProductEdit() {
         </p>
       </div>
 
-      {/* FORM */}
       <div className="bg-white p-6 rounded shadow space-y-4">
 
         <div>
@@ -43,7 +41,6 @@ export default function ProductEdit() {
           <textarea
             defaultValue={product.description}
             className="w-full border rounded px-3 py-2"
-            rows="4"
           />
         </div>
 

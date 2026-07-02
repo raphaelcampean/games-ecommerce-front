@@ -7,7 +7,7 @@ interface Product {
   stockQuantity: number;
   description: string;
   slug: string;
-  image: string;
+  imageUrl: string;
 }
 
 function Products({ products, loading }: { products: Product[]; loading: boolean }) {
