@@ -1,24 +1,63 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import api from "../../../services/api";
+
+interface Product {
+    id: string,
+    name: string,
+    platforms: Platform[],
+    price: number,
+    stockQuantity: number,
+    status: boolean,
+    description: string,
+    imageUrl: string,
+    slug: string,
+    genres: Genre[]
+}
+
+interface Genre {
+  id: string,
+  name: string;
+}
+
+interface Platform {
+  id: string,
+  name: string;
+}
 
 export default function ProductShow() {
-  const product = {
-    id: 1,
-    name: "Elden Ring",
-    description:
-      "Um RPG de ação em mundo aberto desenvolvido pela FromSoftware.",
-    platform: "PC / PS5 / Xbox",
-    price: 249.9,
-    stock: 5,
-    status: "active",
-    image:
-      "https://images.unsplash.com/photo-1605901309584-818e25960a8f",
-  };
+  const { slug } = useParams<{ slug: string }>();
+  const [product, setProduct] = useState<Product>({
+    id: "",
+    name: "",
+    platforms: [],
+    price: 0,
+    stockQuantity: 0,
+    status: false,
+    description: "",
+    imageUrl: "",
+    slug: "",
+    genres: []
+  });
+
+  useEffect(() => {
+    async function loadProduct() {
+      try {
+        const response = await api.get(`/produtos/${slug}`);
+        setProduct(response.data);
+        console.log('Produto carregado:', response.data);
+      } catch (error) {
+        console.error('Erro ao carregar produto:', error);
+      }
+    }
+
+    loadProduct();
+  }, [slug]);
 
   return (
     <div className="p-6 space-y-6">
 
-      {/* HEADER */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-800">
@@ -29,24 +68,29 @@ export default function ProductShow() {
           </p>
         </div>
 
-        <button className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">
-          Editar
-        </button>
+        <Link to="/admin/produtos">
+          <button className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
+            Voltar
+          </button>
+        </Link>
+
+        <Link to={`/admin/produtos/${product.slug}/editar`}>
+          <button className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">
+            Editar
+          </button>
+        </Link>
       </div>
 
-      {/* CONTENT */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-        {/* IMAGE */}
         <div className="bg-white rounded shadow overflow-hidden">
           <img
-            src={product.image}
+            src={product.imageUrl}
             alt={product.name}
             className="w-full h-64 object-cover"
           />
         </div>
 
-        {/* INFO */}
         <div className="lg:col-span-2 bg-white p-5 rounded shadow space-y-4">
 
           <div>
@@ -57,8 +101,13 @@ export default function ProductShow() {
           <div className="grid grid-cols-2 gap-4 text-sm">
 
             <div>
-              <p className="text-gray-500">Plataforma</p>
-              <p className="font-medium">{product.platform}</p>
+              <p className="text-gray-500">Plataformas</p>
+              <p className="font-medium">{product.platforms.map((platform) => platform.name).join(", ")}</p>
+            </div>
+
+            <div>
+              <p className="text-gray-500">Gêneros</p>
+              <p className="font-medium">{product.genres.map((genre) => genre.name).join(", ")}</p>
             </div>
 
             <div>
@@ -70,19 +119,19 @@ export default function ProductShow() {
 
             <div>
               <p className="text-gray-500">Estoque</p>
-              <p className="font-medium">{product.stock}</p>
+              <p className="font-medium">{product.stockQuantity}</p>
             </div>
 
             <div>
               <p className="text-gray-500">Status</p>
               <span
                 className={`px-2 py-1 text-xs rounded ${
-                  product.status === "active"
+                  product.status === true
                     ? "bg-green-100 text-green-700"
                     : "bg-red-100 text-red-700"
                 }`}
               >
-                {product.status === "active"
+                {product.status === true
                   ? "Ativo"
                   : "Inativo"}
               </span>

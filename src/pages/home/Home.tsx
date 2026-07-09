@@ -21,7 +21,7 @@ function Home() {
     async function loadProducts() {
       try {
         const response = await api.get('/produtos');
-        response.data.length === 0 ? handleProducts() : setProducts(response.data.content);
+        response.data.content.length === 0 ? handleProducts() : setProducts(response.data.content);
         console.log('Produtos carregados:', response.data.content);
       } catch (error) {
         console.error('Erro ao carregar produtos:', error);

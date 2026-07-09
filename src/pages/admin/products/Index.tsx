@@ -1,38 +1,69 @@
-import React from "react";
+import api from "../../../services/api";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+interface Product {
+  id: number;
+  name: string;
+  platform: string;
+  price: number;
+  stock: number;
+  status: "active" | "inactive";
+  slug: string;
+}
 
 export default function ProductsIndex() {
-  const products = [
-     {
-      id: 1,
-      title: "The Last of Us Part II",
-      platform: "PS5",
-      price: 199.9,
-      stock: 12,
-      status: "active",
-    },
-    {
-      id: 2,
-      title: "Elden Ring",
-      platform: "PC",
-      price: 249.9,
-      stock: 5,
-      status: "active",
-    },
-    {
-      id: 3,
-      title: "Zelda: Breath of the Wild",
-      platform: "Switch",
-      price: 299.9,
-      stock: 0,
-      status: "inactive",
-    },
-  ];
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    async function loadProducts() {
+      try {
+        const response = await api.get('/produtos');
+        setProducts(response.data.content);
+        console.log('Produtos carregados:', response.data.content);
+      } catch (error) {
+        handleProducts();
+        console.error('Erro ao carregar produtos:', error);
+      }
+    }
+
+    loadProducts();
+  }, []);
+
+  function handleProducts(){
+    setProducts(
+      [
+        {
+        id: 1,
+        name: "The Last of Us Part II",
+        platform: "PS5",
+        price: 199.9,
+        stock: 12,
+        status: "active",
+        slug: "the-last-of-us-part-ii"
+      },
+      {
+        id: 2,
+        name: "Elden Ring",
+        platform: "PC",
+        price: 249.9,
+        stock: 5,
+        status: "active",
+        slug: "elden-ring"
+      },
+      {
+        id: 3,
+        name: "Zelda: Breath of the Wild",
+        platform: "Switch",
+        price: 299.9,
+        stock: 0,
+        status: "inactive",
+        slug: "zelda-breath-of-the-wild"
+      },
+    ]
+  )}
 
   return (
     <div className="p-6 space-y-6">
-
-      {/* HEADER */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-800">Produtos</h1>
@@ -46,7 +77,6 @@ export default function ProductsIndex() {
         </Link>
       </div>
 
-      {/* SEARCH + FILTER */}
       <div className="bg-white p-4 rounded shadow flex flex-col md:flex-row gap-3 md:items-center md:justify-between">
 
         <input
@@ -71,7 +101,6 @@ export default function ProductsIndex() {
         </div>
       </div>
 
-      {/* TABLE */}
       <div className="bg-white rounded shadow overflow-hidden">
 
         <table className="w-full text-sm text-left">
@@ -95,7 +124,7 @@ export default function ProductsIndex() {
                 <td className="p-3">{product.id}</td>
 
                 <td className="p-3 font-medium text-gray-800">
-                  {product.title}
+                  {product.name}
                 </td>
 
                 <td className="p-3">
@@ -119,7 +148,7 @@ export default function ProductsIndex() {
                 </td>
 
                 <td className="p-3 text-right space-x-2">
-                  <Link to={`/admin/produtos/${product.id}`} className="text-blue-600 hover:underline">
+                  <Link to={`/admin/produtos/${product.slug}`} className="text-blue-600 hover:underline">
                     Ver
                   </Link>
                   <Link to={`/admin/produtos/${product.id}/editar`} className="text-yellow-600 hover:underline">

@@ -10,9 +10,19 @@ interface Product {
   description: string;
   slug: string;
   imageUrl: string;
-  genres: string[];
-  platforms: string[];
+  genres: Genre[];
+  platforms: Platform[];
   developerName: string;
+}
+
+interface Genre {
+  id: string,
+  name: string;
+}
+
+interface Platform {
+  id: string,
+  name: string;
 }
 
 function ProductDetails() {
@@ -119,14 +129,14 @@ function ProductDetails() {
             <div className="flex flex-col gap-1 bg-[#1A1C1F] p-3 border border-[#2A2C31]">
               <span className="text-[#F4F4F6]/40 uppercase tracking-wider text-[10px]">// Plataforma</span>
               <span className="text-[#F4F4F6] font-bold uppercase">
-                {product.platforms.join(" / ")}
+                {product.platforms.map((platform) => platform.name).join(" / ")}
               </span>
             </div>
             
             <div className="flex flex-col gap-1 bg-[#1A1C1F] p-3 border border-[#2A2C31]">
               <span className="text-[#F4F4F6]/40 uppercase tracking-wider text-[10px]">// Gênero</span>
               <span className="text-[#F4F4F6] font-bold uppercase">
-                {product.genres.join(" / ")}
+                {product.genres.map((genre) => genre.name).join(" / ")}
               </span>
             </div>
 

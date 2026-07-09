@@ -1,13 +1,13 @@
-export async function uploadImage(file) {
+export async function uploadImage(file: File): Promise<string> {
   const formData = new FormData();
 
   formData.append("file", file);
   formData.append(
     "upload_preset",
-    import.meta.env.CLOUDINARY_UPLOAD_PRESET
+    import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET
   );
 
-  const cloudName = import.meta.env.CLOUDINARY_CLOUD_NAME;
+  const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 
   const res = await fetch(
     `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
@@ -16,6 +16,10 @@ export async function uploadImage(file) {
       body: formData,
     }
   );
+
+  if (!res.ok) {
+    throw new Error("Erro ao enviar imagem para o Cloudinary.");
+  }
 
   const data = await res.json();
 
