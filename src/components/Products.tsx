@@ -21,8 +21,8 @@ function Products({ products, loading }: { products: Product[]; loading: boolean
             ))}
           </div>
         ) : (
-          <div className="bg-[#2A2C31] p-10 rounded-none border-l-4 border-[#D91A2A] text-center">
-            <p className="text-[#F4F4F6] text-xl">
+          <div className="bg-surface p-10 rounded-none border-l-4 border-primary text-center">
+            <p className="text-foreground text-xl">
               {loading ? "Forjando itens..." : "Nenhuma lâmina encontrada"}
             </p>
           </div>

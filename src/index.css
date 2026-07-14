@@ -4,10 +4,42 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @layer base {
+  :root {
+    --background: 235 235 238;
+    --surface: 255 255 255;
+    --border: 190 192 198;
+    --foreground: 20 20 22;
+    --primary: 217 26 42;
+
+    --background-gradient-start: 210 211 216;
+    --background-gradient-middle: 190 192 198;
+    --background-gradient-end: 170 172 178;
+  }
+
+  .dark {
+    --background: 20 20 22;
+    --surface: 26 28 31;
+    --border: 42 44 49;
+    --foreground: 244 244 246;
+    --primary: 217 26 42;
+
+    --background-gradient-start: 74 74 79;
+    --background-gradient-middle: 61 61 66;
+    --background-gradient-end: 47 47 52;
+  }
+
   body {
     @apply min-h-screen m-0;
+
     font-family: 'Exo 2', sans-serif;
-    background: linear-gradient(to bottom, #4a4a4f, #3d3d42, #2f2f34);  
+
+    background: linear-gradient(
+      to bottom,
+      rgb(var(--background-gradient-start)),
+      rgb(var(--background-gradient-middle)),
+      rgb(var(--background-gradient-end))
+    );
   }
 }

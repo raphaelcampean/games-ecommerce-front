@@ -69,12 +69,12 @@ function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-[#141416] py-10 px-6 rounded-lg shadow-2xl border border-[#2A2C31]">
+    <div className="min-h-screen bg-background py-10 px-6 rounded-lg shadow-2xl border border-border">
       <section className="text-center px-6 mt-10 mb-16">
-        <h2 className="text-5xl font-extrabold text-[#F4F4F6] mb-4 tracking-tight">
+        <h2 className="text-5xl font-extrabold text-foreground mb-4 tracking-tight">
           Blade Games: O Arsenal
         </h2>
-        <p className="text-[#F4F4F6]/70 max-w-2xl mx-auto italic">
+        <p className="text-foreground/70 max-w-2xl mx-auto italic">
           "A precisão de uma lâmina. O catálogo dos seus sonhos."
         </p>
       </section>
