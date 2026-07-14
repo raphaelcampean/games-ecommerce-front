@@ -140,7 +140,7 @@ function Registration() {
 
 					<button 
 						type="submit"
-						className="mt-4 bg-primary text-foreground py-4 rounded-none font-bold hover:bg-[#b01522] active:scale-[0.98] transition-all shadow-md uppercase tracking-widest text-sm"
+						className="mt-4 bg-primary text-foreground py-4 rounded-none font-bold hover:bg-primaryHover active:scale-[0.98] transition-all shadow-md uppercase tracking-widest text-sm"
 					>
 						Forjar Cadastro
 					</button>

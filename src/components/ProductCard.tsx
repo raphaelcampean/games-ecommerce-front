@@ -40,7 +40,7 @@ function ProductCard({ product }: { product: Product }) {
         </p>
       </div>
 
-      <button className="w-full bg-primary text-foreground font-bold py-3 hover:bg-[#b01522] transition-all duration-300 mt-auto uppercase tracking-tighter">
+      <button className="w-full bg-primary text-foreground font-bold py-3 hover:bg-primaryHover transition-all duration-300 mt-auto uppercase tracking-tighter">
         Sacar Lâmina
       </button>
     </div>

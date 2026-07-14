@@ -127,7 +127,7 @@ function ProductDetails() {
           </div>
 
 
-          <button className="w-full bg-primary text-foreground font-black py-5 hover:bg-[#b01522] transition-all duration-300 uppercase tracking-wider font-mono text-lg shadow-lg active:scale-[0.99]">
+          <button className="w-full bg-primary text-foreground font-black py-5 hover:bg-primaryHover transition-all duration-300 uppercase tracking-wider font-mono text-lg shadow-lg active:scale-[0.99]">
             Sacar Lâmina (Adicionar)
           </button>
 

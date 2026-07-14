@@ -19,7 +19,7 @@ function NotFound() {
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <Link to="/" className="px-8 py-4 bg-primary text-foreground font-bold rounded-none hover:bg-[#b01522] transition-all transform hover:scale-105 shadow-md uppercase tracking-widest text-xs">
+          <Link to="/" className="px-8 py-4 bg-primary text-foreground font-bold rounded-none hover:bg-primaryHover transition-all transform hover:scale-105 shadow-md uppercase tracking-widest text-xs">
             Retornar ao Dojo
           </Link>
 

@@ -14,6 +14,7 @@ export default {
         border: "rgb(var(--border) / <alpha-value>)",
         foreground: "rgb(var(--foreground) / <alpha-value>)",
         primary: "rgb(var(--primary) / <alpha-value>)",
+        primaryHover: "rgb(var(--primary-hover) / <alpha-value>)"
       }
     },
   },
