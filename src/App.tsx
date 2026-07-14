@@ -28,8 +28,8 @@ function App() {
         <Route path="produtos">
           <Route index element={<Index />} />
           <Route path="novo" element={<New />} />
-          <Route path=":slug" element={<Show />} />
-          <Route path=":slug/editar" element={<Edit />} />
+          <Route path=":id" element={<Show />} />
+          <Route path=":id/editar" element={<Edit />} />
         </Route>
 
       </Route>

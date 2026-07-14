@@ -1,6 +1,8 @@
 import api from "../../../services/api";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+
 interface Product {
   id: number;
   name: string;
@@ -28,6 +30,20 @@ export default function ProductsIndex() {
 
     loadProducts();
   }, []);
+
+  function handleDeleteProduct(productId: number) {
+    if (window.confirm("Tem certeza que deseja excluir este produto?")) {
+      api.delete(`/admin/produtos/${productId}`)
+        .then(() => {
+          setProducts(products.filter(product => product.id !== productId));
+          toast.success("Produto excluído com sucesso!");
+        })
+        .catch((error) => {
+          console.error("Erro ao excluir produto:", error);
+          toast.error("Ocorreu um erro ao excluir o produto. Tente novamente.");
+        });
+    }
+  }
 
   function handleProducts(){
     setProducts(
@@ -148,15 +164,15 @@ export default function ProductsIndex() {
                 </td>
 
                 <td className="p-3 text-right space-x-2">
-                  <Link to={`/admin/produtos/${product.slug}`} className="text-blue-600 hover:underline">
+                  <Link to={`/admin/produtos/${product.id}`} className="text-blue-600 hover:underline">
                     Ver
                   </Link>
                   <Link to={`/admin/produtos/${product.id}/editar`} className="text-yellow-600 hover:underline">
                     Editar
                   </Link>
-                  <Link to={`/admin/produtos/${product.id}/excluir`} className="text-red-600 hover:underline">
+                  <a href="#" onClick={() => handleDeleteProduct(product.id)} className="text-red-600 hover:underline">
                     Excluir
-                  </Link>
+                  </a>
                 </td>
               </tr>
             ))}

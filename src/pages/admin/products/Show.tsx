@@ -27,7 +27,7 @@ interface Platform {
 }
 
 export default function ProductShow() {
-  const { slug } = useParams<{ slug: string }>();
+  const { id } = useParams<{ id: string }>();
   const [product, setProduct] = useState<Product>({
     id: "",
     name: "",
@@ -43,8 +43,10 @@ export default function ProductShow() {
 
   useEffect(() => {
     async function loadProduct() {
+      console.log('Carregando produto com ID:', id);
+
       try {
-        const response = await api.get(`/produtos/${slug}`);
+        const response = await api.get(`/admin/produtos/${id}`);
         setProduct(response.data);
         console.log('Produto carregado:', response.data);
       } catch (error) {
@@ -53,7 +55,7 @@ export default function ProductShow() {
     }
 
     loadProduct();
-  }, [slug]);
+  }, [id]);
 
   return (
     <div className="p-6 space-y-6">
@@ -74,7 +76,7 @@ export default function ProductShow() {
           </button>
         </Link>
 
-        <Link to={`/admin/produtos/${product.slug}/editar`}>
+        <Link to={`/admin/produtos/${product.id}/editar`}>
           <button className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">
             Editar
           </button>
