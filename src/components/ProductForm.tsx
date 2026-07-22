@@ -287,16 +287,19 @@ export default function ProductForm({ mode, initialProduct }: ProductFormProps) 
         </select>
       </div>
 
-      <div>
-        <label className="text-sm text-gray-600">Imagem</label>
+      <label className="cursor-pointer">
+        <p className="mt-8">Imagem</p>
+        <div className="border-2 border-dashed rounded-lg p-6 text-center hover:bg-gray-50">
+          Clique para enviar uma imagem
+        </div>
 
         <input
           type="file"
           accept="image/*"
           onChange={handleImageChange}
-          className="w-full border rounded px-3 py-2"
+          className="hidden"
         />
-      </div>
+      </label>
 
       <div className="flex justify-end gap-3">
         <Link to="/admin/produtos">

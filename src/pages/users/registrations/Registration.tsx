@@ -1,11 +1,14 @@
 import api from "../../../services/api";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Registration() {
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [username, setUsername] = useState('');
+	const navigate = useNavigate();
 
 	const [emailError, setEmailError] = useState(false);
 	const [usernameError, setUsernameError] = useState(false);
@@ -14,20 +17,24 @@ function Registration() {
 		event.preventDefault();
 
 		try {
-			await api.post('/users', {
+			const response = await api.post('/usuarios', {
 				name,
 				email,
 				password,
 				username
 			});
 
-			alert('Usuário cadastrado com sucesso!');
+			const { token, user } = response.data;
+
+			localStorage.setItem("token", token);
+			localStorage.setItem("user", JSON.stringify(user));
 
 			setName('');
 			setEmail('');
 			setPassword('');
 			setUsername('');
 
+			navigate('/login');
 		} catch (error) {
 			console.error("Erro ao cadastrar usuário:", error);
 			alert('Erro no cadastro. Verifique os dados.');
@@ -145,6 +152,9 @@ function Registration() {
 						Forjar Cadastro
 					</button>
 
+					<p className="text-center text-xs text-foreground/40 mt-4 uppercase tracking-widest font-mono">
+						Já possui uma conta? <Link to="/login" className="text-primary hover:text-primaryHover transition-all">Entrar</Link>
+					</p>
 				</form>
 			</div>
 		</div>

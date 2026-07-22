@@ -2,12 +2,12 @@ import { Routes, Route } from "react-router-dom";
 import MainLayout from "./layout/MainLayout";
 import Home from "./pages/home/Home.jsx";
 import Registration from "./pages/users/registrations/Registration.jsx";
+import Login from "./pages/users/login/Login.js";
 import ProductDetails from "./pages/products/ProductDetails.jsx";
 import NotFound from "./pages/notfound/NotFound.jsx";
 
 import AdminLayout from "./layout/AdminLayout";
 import AdminDashboard from "./pages/admin/dashboard/AdminDashboard.jsx";
-
 import Index from "./pages/admin/products/Index.jsx";
 import Show from "./pages/admin/products/Show.jsx";
 import Edit from "./pages/admin/products/Edit.jsx";
@@ -19,6 +19,7 @@ function App() {
       <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="cadastro" element={<Registration />} />
+        <Route path="login" element={<Login />} />
         <Route path="produtos/:slug" element={<ProductDetails />} />
       </Route>
 
