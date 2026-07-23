@@ -2,33 +2,35 @@ import { useState } from "react";
 import api from "../../../services/api";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 function Login() {
 	const [login, setLogin] = useState("");
 	const [password, setPassword] = useState("");
 	const navigate = useNavigate();
-
+	const { login: loginUser } = useAuth();
 
 	async function handleLogin(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
 
 		try {
 			const response = await api.post("/login", {
-				login,
-				password,
+			login,
+			password,
 			});
 
-			localStorage.setItem("token", response.data.token);
-
-			alert("Login realizado com sucesso!");
+			await loginUser(response.data.token);
+			toast.success("Login realizado com sucesso!");
 
 			setLogin("");
 			setPassword("");
 
 			navigate("/");
+
 		} catch (error) {
 			console.error(error);
-			alert("Usuário ou senha inválidos.");
+			toast.error("Usuário ou senha inválidos.");
 		}
 	}
 
